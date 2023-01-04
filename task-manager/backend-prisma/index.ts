@@ -19,10 +19,10 @@ const pubSub = new RedisPubSub({
 });
 
 class SubscriptionResolver {
-  /*@TypeGraphQL.Subscription({
+  @TypeGraphQL.Subscription({
     topics: ["NOTIFICATIONS", "ERRORS"],
     subscribe: () => pubSub.asyncIterator('NOTIFICATIONS'),
-  })*/
+  })
   hello(): String {
     return 'hello';
   };

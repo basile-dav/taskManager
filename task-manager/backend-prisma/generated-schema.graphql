@@ -1690,6 +1690,10 @@ input StringWithAggregatesFilter {
   startsWith: String
 }
 
+type Subscription {
+  hello: String!
+}
+
 enum TaskState {
   DONE
   IN_PROGRESS
