@@ -1,0 +1,106 @@
+datasource db {
+  provider = "postgresql"
+  url      = "postgres://postgres:postgrespw@localhost:5432/task-manager-graphql?schema=public"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+generator typegraphql {
+  provider = "typegraphql-prisma"
+  output   = "../prisma/generated/type-graphql"
+  emitIdAsIDType = true
+  simpleResolvers = true
+}
+
+model User {
+  id              String  @default(cuid()) @id
+  name            String
+  email           String  @unique
+  active          Boolean
+  preferences     Json
+  last_sign_in_at Datetime
+  created_at      Datetime
+  updated_at      Datetime
+}
+
+model Notification {
+  id              String  @default(cuid()) @id
+
+  User   User @relation(fields: [user_id], references: [id])
+  user_id         String
+
+  Action   Action @relation(fields: [action_id], references: [id])
+  action_id       String
+
+  readed_at       Datetime
+}
+
+model Action {
+  id          String      @id @default(cuid())
+  group       Group       @default(GROUP1)
+  name        Name        @default(BRAILLY)
+  created_at  Datetime
+  target_id   String
+  target_type Target_type @default(TEST1)
+}
+
+enum Group {
+  GROUP1
+  GROUP2
+}
+
+enum Name {
+  LINQUETTE
+  BRAILLY
+}
+
+enum Target_type {
+  TEST1
+  TEST2
+}
+
+model Task {
+  id          String   @id @default(cuid())
+  title       String
+  description String
+  task_owner       User     @relation(fields: [owner_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  owner_id    Int
+  due_at      DateTime
+  created_at  DateTime
+  update_at   DateTime
+  state       State     @default(EN_COURS)
+}
+
+enum State {
+  TERMINEE
+  EN_COURS
+}
+
+model Assignee {
+  id         String   @id @default(cuid())
+  Task       Task     @relation(fields: [task_id], references: [id])
+  task_id    String
+  User       User     @relation(fields: [user_id], references: [id])
+  user_id    String
+  created_at DateTime
+}
+
+model Comment {
+id String @default(cuid()) @id
+comment_owner User @relation(fields:owner_id,references:id)
+owner_id String?
+target Task @relation(fields:target_id,references:id)
+target_id String
+target_type Target @default(EN_COURS)
+Parent Parent @relation(fields:parent_id,references:id)
+parent_id String
+content String
+created_at Datetime
+updated_at Datetime
+}
+enum Target{
+EN_COURS
+FINITO
+}

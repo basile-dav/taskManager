@@ -1,8 +1,7 @@
 datasource db {
   provider = "postgresql"
-  url      = "postgres://postgres:postgrespw@localhost:49153" //changed with own docker connection stream 
+  url      = "postgres://user@localhost:5432"
 }
-
 generator client {
   provider = "prisma-client-js"
 }

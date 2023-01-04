@@ -1,0 +1,86 @@
+datasource db {
+  provider = "postgresql"
+  url      = "postgresql://USERNAME:PASSWORD@localhost:5432/task-manager-graphql?schema=public"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+generator typegraphql {
+  provider = "typegraphql-prisma"
+  output   = "../prisma/generated/type-graphql"
+  emitIdAsIDType = true
+  simpleResolvers = true
+}
+
+model User {
+  id              String  @default(cuid()) @id
+  email           String  @unique
+  /// @TypeGraphQL.omit(output: true)
+  password        String
+  /// @TypeGraphQL.omit(output: true, input: true)
+  password_digest   String
+}
+model Comments {
+  id            String @default(cuid()) @id
+  owner       User     @relation(fields: [owner_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  owner_id    Int
+  target       Task     @relation(fields: [target_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  target_id    Int
+  target_type Target_type @default(test1)
+  parent_id       String @default(cuid()) @parent_id
+  content         String
+  created_at      Datetime
+  updated_at      Datetime
+  }
+
+
+model Task {
+  id          String   @id @default(cuid())
+  title       String
+  description String
+  owner       User     @relation(fields: [owner_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  owner_id    Int
+  due_at      DateTime
+  created_at  DateTime
+  update_at   DateTime
+  state       State     @default(EN_COURS)
+}
+
+enum State {
+  TERMINEE
+  EN_COURS
+}
+
+model Assignees {
+  id         String   @id @default(cuid())
+  Task       Task     @relation(fields: [task_id], references: [id])
+  task_id    String
+  User       User     @relation(fields: [user_id], references: [id])
+  user_id    String
+  created_at DateTime
+}
+model Action {
+  id          String      @id @default(cuid())
+  group       Group       @default(group1)
+  name        Name        @default(Brailly)
+  created_at  Datetime
+  target_id   String
+  target_type Target_type @default(test1)
+}
+
+enum Group {
+  group1
+  group2
+}
+
+enum Name {
+  Linquette
+  Brailly
+}
+
+enum Target_type {
+  test1
+  test2
+}
