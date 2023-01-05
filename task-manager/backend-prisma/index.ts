@@ -8,7 +8,7 @@ import { useServer } from 'graphql-ws/lib/use/ws';
 import { resolvers as generatedResolvers } from "./prisma/generated/type-graphql";
 
 import { RedisPubSub } from 'graphql-redis-subscriptions';
-
+import {AuthenticationResolver} from "./src/auth-mutation";
 interface Context {
   prisma: PrismaClient;
 }
@@ -31,6 +31,7 @@ class SubscriptionResolver {
 const resolvers = [
   ...generatedResolvers,
   SubscriptionResolver,
+  AuthenticationResolver,
 ] as TypeGraphQL.NonEmptyArray<Function>;
 
 async function main() {

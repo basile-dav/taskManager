@@ -29,7 +29,14 @@ type Actions {
   group: ActionGroup!
   id: ID!
   name: ActionName!
-  notifications(cursor: NotificationsWhereUniqueInput, distinct: [NotificationsScalarFieldEnum!], orderBy: [NotificationsOrderByWithRelationInput!], skip: Int, take: Int, where: NotificationsWhereInput): [Notifications!]!
+  notifications(
+    cursor: NotificationsWhereUniqueInput
+    distinct: [NotificationsScalarFieldEnum!]
+    orderBy: [NotificationsOrderByWithRelationInput!]
+    skip: Int
+    take: Int
+    where: NotificationsWhereInput
+  ): [Notifications!]!
   target_id: String!
   target_type: ActionTargetType!
 }
@@ -1045,7 +1052,10 @@ input EnumTaskStateWithAggregatesFilter {
 """
 The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
 """
-scalar JSON @specifiedBy(url: "http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf")
+scalar JSON
+  @specifiedBy(
+    url: "http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf"
+  )
 
 input JsonFilter {
   array_contains: JSON
@@ -1083,12 +1093,30 @@ input JsonWithAggregatesFilter {
 }
 
 type Mutation {
-  createManyActions(data: [ActionsCreateManyInput!]!, skipDuplicates: Boolean): AffectedRowsOutput!
-  createManyAssignees(data: [AssigneesCreateManyInput!]!, skipDuplicates: Boolean): AffectedRowsOutput!
-  createManyComments(data: [CommentsCreateManyInput!]!, skipDuplicates: Boolean): AffectedRowsOutput!
-  createManyNotifications(data: [NotificationsCreateManyInput!]!, skipDuplicates: Boolean): AffectedRowsOutput!
-  createManyTasks(data: [TasksCreateManyInput!]!, skipDuplicates: Boolean): AffectedRowsOutput!
-  createManyUsers(data: [UsersCreateManyInput!]!, skipDuplicates: Boolean): AffectedRowsOutput!
+  createManyActions(
+    data: [ActionsCreateManyInput!]!
+    skipDuplicates: Boolean
+  ): AffectedRowsOutput!
+  createManyAssignees(
+    data: [AssigneesCreateManyInput!]!
+    skipDuplicates: Boolean
+  ): AffectedRowsOutput!
+  createManyComments(
+    data: [CommentsCreateManyInput!]!
+    skipDuplicates: Boolean
+  ): AffectedRowsOutput!
+  createManyNotifications(
+    data: [NotificationsCreateManyInput!]!
+    skipDuplicates: Boolean
+  ): AffectedRowsOutput!
+  createManyTasks(
+    data: [TasksCreateManyInput!]!
+    skipDuplicates: Boolean
+  ): AffectedRowsOutput!
+  createManyUsers(
+    data: [UsersCreateManyInput!]!
+    skipDuplicates: Boolean
+  ): AffectedRowsOutput!
   createOneActions(data: ActionsCreateInput!): Actions!
   createOneAssignees(data: AssigneesCreateInput!): Assignees!
   createOneComments(data: CommentsCreateInput!): Comments!
@@ -1107,24 +1135,85 @@ type Mutation {
   deleteOneNotifications(where: NotificationsWhereUniqueInput!): Notifications
   deleteOneTasks(where: TasksWhereUniqueInput!): Tasks
   deleteOneUsers(where: UsersWhereUniqueInput!): Users
-  updateManyActions(data: ActionsUpdateManyMutationInput!, where: ActionsWhereInput): AffectedRowsOutput!
-  updateManyAssignees(data: AssigneesUpdateManyMutationInput!, where: AssigneesWhereInput): AffectedRowsOutput!
-  updateManyComments(data: CommentsUpdateManyMutationInput!, where: CommentsWhereInput): AffectedRowsOutput!
-  updateManyNotifications(data: NotificationsUpdateManyMutationInput!, where: NotificationsWhereInput): AffectedRowsOutput!
-  updateManyTasks(data: TasksUpdateManyMutationInput!, where: TasksWhereInput): AffectedRowsOutput!
-  updateManyUsers(data: UsersUpdateManyMutationInput!, where: UsersWhereInput): AffectedRowsOutput!
-  updateOneActions(data: ActionsUpdateInput!, where: ActionsWhereUniqueInput!): Actions
-  updateOneAssignees(data: AssigneesUpdateInput!, where: AssigneesWhereUniqueInput!): Assignees
-  updateOneComments(data: CommentsUpdateInput!, where: CommentsWhereUniqueInput!): Comments
-  updateOneNotifications(data: NotificationsUpdateInput!, where: NotificationsWhereUniqueInput!): Notifications
+  updateManyActions(
+    data: ActionsUpdateManyMutationInput!
+    where: ActionsWhereInput
+  ): AffectedRowsOutput!
+  updateManyAssignees(
+    data: AssigneesUpdateManyMutationInput!
+    where: AssigneesWhereInput
+  ): AffectedRowsOutput!
+  updateManyComments(
+    data: CommentsUpdateManyMutationInput!
+    where: CommentsWhereInput
+  ): AffectedRowsOutput!
+  updateManyNotifications(
+    data: NotificationsUpdateManyMutationInput!
+    where: NotificationsWhereInput
+  ): AffectedRowsOutput!
+  updateManyTasks(
+    data: TasksUpdateManyMutationInput!
+    where: TasksWhereInput
+  ): AffectedRowsOutput!
+  updateManyUsers(
+    data: UsersUpdateManyMutationInput!
+    where: UsersWhereInput
+  ): AffectedRowsOutput!
+  updateOneActions(
+    data: ActionsUpdateInput!
+    where: ActionsWhereUniqueInput!
+  ): Actions
+  updateOneAssignees(
+    data: AssigneesUpdateInput!
+    where: AssigneesWhereUniqueInput!
+  ): Assignees
+  updateOneComments(
+    data: CommentsUpdateInput!
+    where: CommentsWhereUniqueInput!
+  ): Comments
+  updateOneNotifications(
+    data: NotificationsUpdateInput!
+    where: NotificationsWhereUniqueInput!
+  ): Notifications
   updateOneTasks(data: TasksUpdateInput!, where: TasksWhereUniqueInput!): Tasks
   updateOneUsers(data: UsersUpdateInput!, where: UsersWhereUniqueInput!): Users
-  upsertOneActions(create: ActionsCreateInput!, update: ActionsUpdateInput!, where: ActionsWhereUniqueInput!): Actions!
-  upsertOneAssignees(create: AssigneesCreateInput!, update: AssigneesUpdateInput!, where: AssigneesWhereUniqueInput!): Assignees!
-  upsertOneComments(create: CommentsCreateInput!, update: CommentsUpdateInput!, where: CommentsWhereUniqueInput!): Comments!
-  upsertOneNotifications(create: NotificationsCreateInput!, update: NotificationsUpdateInput!, where: NotificationsWhereUniqueInput!): Notifications!
-  upsertOneTasks(create: TasksCreateInput!, update: TasksUpdateInput!, where: TasksWhereUniqueInput!): Tasks!
-  upsertOneUsers(create: UsersCreateInput!, update: UsersUpdateInput!, where: UsersWhereUniqueInput!): Users!
+  upsertOneActions(
+    create: ActionsCreateInput!
+    update: ActionsUpdateInput!
+    where: ActionsWhereUniqueInput!
+  ): Actions!
+  upsertOneAssignees(
+    create: AssigneesCreateInput!
+    update: AssigneesUpdateInput!
+    where: AssigneesWhereUniqueInput!
+  ): Assignees!
+  upsertOneComments(
+    create: CommentsCreateInput!
+    update: CommentsUpdateInput!
+    where: CommentsWhereUniqueInput!
+  ): Comments!
+  upsertOneNotifications(
+    create: NotificationsCreateInput!
+    update: NotificationsUpdateInput!
+    where: NotificationsWhereUniqueInput!
+  ): Notifications!
+  upsertOneTasks(
+    create: TasksCreateInput!
+    update: TasksUpdateInput!
+    where: TasksWhereUniqueInput!
+  ): Tasks!
+  upsertOneUsers(
+    create: UsersCreateInput!
+    update: UsersUpdateInput!
+    where: UsersWhereUniqueInput!
+  ): Users!
+  signup(email: String!, password: String!, name: String!): AuthPayload
+  login(email: String!, password: String!): AuthPayload
+}
+
+type AuthPayload {
+  token: String
+  user: User
 }
 
 input NestedBoolFilter {
@@ -1599,30 +1688,192 @@ input NotificationsWhereUniqueInput {
 }
 
 type Query {
-  aggregateActions(cursor: ActionsWhereUniqueInput, orderBy: [ActionsOrderByWithRelationInput!], skip: Int, take: Int, where: ActionsWhereInput): AggregateActions!
-  aggregateAssignees(cursor: AssigneesWhereUniqueInput, orderBy: [AssigneesOrderByWithRelationInput!], skip: Int, take: Int, where: AssigneesWhereInput): AggregateAssignees!
-  aggregateComments(cursor: CommentsWhereUniqueInput, orderBy: [CommentsOrderByWithRelationInput!], skip: Int, take: Int, where: CommentsWhereInput): AggregateComments!
-  aggregateNotifications(cursor: NotificationsWhereUniqueInput, orderBy: [NotificationsOrderByWithRelationInput!], skip: Int, take: Int, where: NotificationsWhereInput): AggregateNotifications!
-  aggregateTasks(cursor: TasksWhereUniqueInput, orderBy: [TasksOrderByWithRelationInput!], skip: Int, take: Int, where: TasksWhereInput): AggregateTasks!
-  aggregateUsers(cursor: UsersWhereUniqueInput, orderBy: [UsersOrderByWithRelationInput!], skip: Int, take: Int, where: UsersWhereInput): AggregateUsers!
-  findFirstActions(cursor: ActionsWhereUniqueInput, distinct: [ActionsScalarFieldEnum!], orderBy: [ActionsOrderByWithRelationInput!], skip: Int, take: Int, where: ActionsWhereInput): Actions
-  findFirstActionsOrThrow(cursor: ActionsWhereUniqueInput, distinct: [ActionsScalarFieldEnum!], orderBy: [ActionsOrderByWithRelationInput!], skip: Int, take: Int, where: ActionsWhereInput): Actions
-  findFirstAssignees(cursor: AssigneesWhereUniqueInput, distinct: [AssigneesScalarFieldEnum!], orderBy: [AssigneesOrderByWithRelationInput!], skip: Int, take: Int, where: AssigneesWhereInput): Assignees
-  findFirstAssigneesOrThrow(cursor: AssigneesWhereUniqueInput, distinct: [AssigneesScalarFieldEnum!], orderBy: [AssigneesOrderByWithRelationInput!], skip: Int, take: Int, where: AssigneesWhereInput): Assignees
-  findFirstComments(cursor: CommentsWhereUniqueInput, distinct: [CommentsScalarFieldEnum!], orderBy: [CommentsOrderByWithRelationInput!], skip: Int, take: Int, where: CommentsWhereInput): Comments
-  findFirstCommentsOrThrow(cursor: CommentsWhereUniqueInput, distinct: [CommentsScalarFieldEnum!], orderBy: [CommentsOrderByWithRelationInput!], skip: Int, take: Int, where: CommentsWhereInput): Comments
-  findFirstNotifications(cursor: NotificationsWhereUniqueInput, distinct: [NotificationsScalarFieldEnum!], orderBy: [NotificationsOrderByWithRelationInput!], skip: Int, take: Int, where: NotificationsWhereInput): Notifications
-  findFirstNotificationsOrThrow(cursor: NotificationsWhereUniqueInput, distinct: [NotificationsScalarFieldEnum!], orderBy: [NotificationsOrderByWithRelationInput!], skip: Int, take: Int, where: NotificationsWhereInput): Notifications
-  findFirstTasks(cursor: TasksWhereUniqueInput, distinct: [TasksScalarFieldEnum!], orderBy: [TasksOrderByWithRelationInput!], skip: Int, take: Int, where: TasksWhereInput): Tasks
-  findFirstTasksOrThrow(cursor: TasksWhereUniqueInput, distinct: [TasksScalarFieldEnum!], orderBy: [TasksOrderByWithRelationInput!], skip: Int, take: Int, where: TasksWhereInput): Tasks
-  findFirstUsers(cursor: UsersWhereUniqueInput, distinct: [UsersScalarFieldEnum!], orderBy: [UsersOrderByWithRelationInput!], skip: Int, take: Int, where: UsersWhereInput): Users
-  findFirstUsersOrThrow(cursor: UsersWhereUniqueInput, distinct: [UsersScalarFieldEnum!], orderBy: [UsersOrderByWithRelationInput!], skip: Int, take: Int, where: UsersWhereInput): Users
-  findManyActions(cursor: ActionsWhereUniqueInput, distinct: [ActionsScalarFieldEnum!], orderBy: [ActionsOrderByWithRelationInput!], skip: Int, take: Int, where: ActionsWhereInput): [Actions!]!
-  findManyAssignees(cursor: AssigneesWhereUniqueInput, distinct: [AssigneesScalarFieldEnum!], orderBy: [AssigneesOrderByWithRelationInput!], skip: Int, take: Int, where: AssigneesWhereInput): [Assignees!]!
-  findManyComments(cursor: CommentsWhereUniqueInput, distinct: [CommentsScalarFieldEnum!], orderBy: [CommentsOrderByWithRelationInput!], skip: Int, take: Int, where: CommentsWhereInput): [Comments!]!
-  findManyNotifications(cursor: NotificationsWhereUniqueInput, distinct: [NotificationsScalarFieldEnum!], orderBy: [NotificationsOrderByWithRelationInput!], skip: Int, take: Int, where: NotificationsWhereInput): [Notifications!]!
-  findManyTasks(cursor: TasksWhereUniqueInput, distinct: [TasksScalarFieldEnum!], orderBy: [TasksOrderByWithRelationInput!], skip: Int, take: Int, where: TasksWhereInput): [Tasks!]!
-  findManyUsers(cursor: UsersWhereUniqueInput, distinct: [UsersScalarFieldEnum!], orderBy: [UsersOrderByWithRelationInput!], skip: Int, take: Int, where: UsersWhereInput): [Users!]!
+  aggregateActions(
+    cursor: ActionsWhereUniqueInput
+    orderBy: [ActionsOrderByWithRelationInput!]
+    skip: Int
+    take: Int
+    where: ActionsWhereInput
+  ): AggregateActions!
+  aggregateAssignees(
+    cursor: AssigneesWhereUniqueInput
+    orderBy: [AssigneesOrderByWithRelationInput!]
+    skip: Int
+    take: Int
+    where: AssigneesWhereInput
+  ): AggregateAssignees!
+  aggregateComments(
+    cursor: CommentsWhereUniqueInput
+    orderBy: [CommentsOrderByWithRelationInput!]
+    skip: Int
+    take: Int
+    where: CommentsWhereInput
+  ): AggregateComments!
+  aggregateNotifications(
+    cursor: NotificationsWhereUniqueInput
+    orderBy: [NotificationsOrderByWithRelationInput!]
+    skip: Int
+    take: Int
+    where: NotificationsWhereInput
+  ): AggregateNotifications!
+  aggregateTasks(
+    cursor: TasksWhereUniqueInput
+    orderBy: [TasksOrderByWithRelationInput!]
+    skip: Int
+    take: Int
+    where: TasksWhereInput
+  ): AggregateTasks!
+  aggregateUsers(
+    cursor: UsersWhereUniqueInput
+    orderBy: [UsersOrderByWithRelationInput!]
+    skip: Int
+    take: Int
+    where: UsersWhereInput
+  ): AggregateUsers!
+  findFirstActions(
+    cursor: ActionsWhereUniqueInput
+    distinct: [ActionsScalarFieldEnum!]
+    orderBy: [ActionsOrderByWithRelationInput!]
+    skip: Int
+    take: Int
+    where: ActionsWhereInput
+  ): Actions
+  findFirstActionsOrThrow(
+    cursor: ActionsWhereUniqueInput
+    distinct: [ActionsScalarFieldEnum!]
+    orderBy: [ActionsOrderByWithRelationInput!]
+    skip: Int
+    take: Int
+    where: ActionsWhereInput
+  ): Actions
+  findFirstAssignees(
+    cursor: AssigneesWhereUniqueInput
+    distinct: [AssigneesScalarFieldEnum!]
+    orderBy: [AssigneesOrderByWithRelationInput!]
+    skip: Int
+    take: Int
+    where: AssigneesWhereInput
+  ): Assignees
+  findFirstAssigneesOrThrow(
+    cursor: AssigneesWhereUniqueInput
+    distinct: [AssigneesScalarFieldEnum!]
+    orderBy: [AssigneesOrderByWithRelationInput!]
+    skip: Int
+    take: Int
+    where: AssigneesWhereInput
+  ): Assignees
+  findFirstComments(
+    cursor: CommentsWhereUniqueInput
+    distinct: [CommentsScalarFieldEnum!]
+    orderBy: [CommentsOrderByWithRelationInput!]
+    skip: Int
+    take: Int
+    where: CommentsWhereInput
+  ): Comments
+  findFirstCommentsOrThrow(
+    cursor: CommentsWhereUniqueInput
+    distinct: [CommentsScalarFieldEnum!]
+    orderBy: [CommentsOrderByWithRelationInput!]
+    skip: Int
+    take: Int
+    where: CommentsWhereInput
+  ): Comments
+  findFirstNotifications(
+    cursor: NotificationsWhereUniqueInput
+    distinct: [NotificationsScalarFieldEnum!]
+    orderBy: [NotificationsOrderByWithRelationInput!]
+    skip: Int
+    take: Int
+    where: NotificationsWhereInput
+  ): Notifications
+  findFirstNotificationsOrThrow(
+    cursor: NotificationsWhereUniqueInput
+    distinct: [NotificationsScalarFieldEnum!]
+    orderBy: [NotificationsOrderByWithRelationInput!]
+    skip: Int
+    take: Int
+    where: NotificationsWhereInput
+  ): Notifications
+  findFirstTasks(
+    cursor: TasksWhereUniqueInput
+    distinct: [TasksScalarFieldEnum!]
+    orderBy: [TasksOrderByWithRelationInput!]
+    skip: Int
+    take: Int
+    where: TasksWhereInput
+  ): Tasks
+  findFirstTasksOrThrow(
+    cursor: TasksWhereUniqueInput
+    distinct: [TasksScalarFieldEnum!]
+    orderBy: [TasksOrderByWithRelationInput!]
+    skip: Int
+    take: Int
+    where: TasksWhereInput
+  ): Tasks
+  findFirstUsers(
+    cursor: UsersWhereUniqueInput
+    distinct: [UsersScalarFieldEnum!]
+    orderBy: [UsersOrderByWithRelationInput!]
+    skip: Int
+    take: Int
+    where: UsersWhereInput
+  ): Users
+  findFirstUsersOrThrow(
+    cursor: UsersWhereUniqueInput
+    distinct: [UsersScalarFieldEnum!]
+    orderBy: [UsersOrderByWithRelationInput!]
+    skip: Int
+    take: Int
+    where: UsersWhereInput
+  ): Users
+  findManyActions(
+    cursor: ActionsWhereUniqueInput
+    distinct: [ActionsScalarFieldEnum!]
+    orderBy: [ActionsOrderByWithRelationInput!]
+    skip: Int
+    take: Int
+    where: ActionsWhereInput
+  ): [Actions!]!
+  findManyAssignees(
+    cursor: AssigneesWhereUniqueInput
+    distinct: [AssigneesScalarFieldEnum!]
+    orderBy: [AssigneesOrderByWithRelationInput!]
+    skip: Int
+    take: Int
+    where: AssigneesWhereInput
+  ): [Assignees!]!
+  findManyComments(
+    cursor: CommentsWhereUniqueInput
+    distinct: [CommentsScalarFieldEnum!]
+    orderBy: [CommentsOrderByWithRelationInput!]
+    skip: Int
+    take: Int
+    where: CommentsWhereInput
+  ): [Comments!]!
+  findManyNotifications(
+    cursor: NotificationsWhereUniqueInput
+    distinct: [NotificationsScalarFieldEnum!]
+    orderBy: [NotificationsOrderByWithRelationInput!]
+    skip: Int
+    take: Int
+    where: NotificationsWhereInput
+  ): [Notifications!]!
+  findManyTasks(
+    cursor: TasksWhereUniqueInput
+    distinct: [TasksScalarFieldEnum!]
+    orderBy: [TasksOrderByWithRelationInput!]
+    skip: Int
+    take: Int
+    where: TasksWhereInput
+  ): [Tasks!]!
+  findManyUsers(
+    cursor: UsersWhereUniqueInput
+    distinct: [UsersScalarFieldEnum!]
+    orderBy: [UsersOrderByWithRelationInput!]
+    skip: Int
+    take: Int
+    where: UsersWhereInput
+  ): [Users!]!
   findUniqueActions(where: ActionsWhereUniqueInput!): Actions
   findUniqueActionsOrThrow(where: ActionsWhereUniqueInput!): Actions
   findUniqueAssignees(where: AssigneesWhereUniqueInput!): Assignees
@@ -1630,17 +1881,61 @@ type Query {
   findUniqueComments(where: CommentsWhereUniqueInput!): Comments
   findUniqueCommentsOrThrow(where: CommentsWhereUniqueInput!): Comments
   findUniqueNotifications(where: NotificationsWhereUniqueInput!): Notifications
-  findUniqueNotificationsOrThrow(where: NotificationsWhereUniqueInput!): Notifications
+  findUniqueNotificationsOrThrow(
+    where: NotificationsWhereUniqueInput!
+  ): Notifications
   findUniqueTasks(where: TasksWhereUniqueInput!): Tasks
   findUniqueTasksOrThrow(where: TasksWhereUniqueInput!): Tasks
   findUniqueUsers(where: UsersWhereUniqueInput!): Users
   findUniqueUsersOrThrow(where: UsersWhereUniqueInput!): Users
-  groupByActions(by: [ActionsScalarFieldEnum!]!, having: ActionsScalarWhereWithAggregatesInput, orderBy: [ActionsOrderByWithAggregationInput!], skip: Int, take: Int, where: ActionsWhereInput): [ActionsGroupBy!]!
-  groupByAssignees(by: [AssigneesScalarFieldEnum!]!, having: AssigneesScalarWhereWithAggregatesInput, orderBy: [AssigneesOrderByWithAggregationInput!], skip: Int, take: Int, where: AssigneesWhereInput): [AssigneesGroupBy!]!
-  groupByComments(by: [CommentsScalarFieldEnum!]!, having: CommentsScalarWhereWithAggregatesInput, orderBy: [CommentsOrderByWithAggregationInput!], skip: Int, take: Int, where: CommentsWhereInput): [CommentsGroupBy!]!
-  groupByNotifications(by: [NotificationsScalarFieldEnum!]!, having: NotificationsScalarWhereWithAggregatesInput, orderBy: [NotificationsOrderByWithAggregationInput!], skip: Int, take: Int, where: NotificationsWhereInput): [NotificationsGroupBy!]!
-  groupByTasks(by: [TasksScalarFieldEnum!]!, having: TasksScalarWhereWithAggregatesInput, orderBy: [TasksOrderByWithAggregationInput!], skip: Int, take: Int, where: TasksWhereInput): [TasksGroupBy!]!
-  groupByUsers(by: [UsersScalarFieldEnum!]!, having: UsersScalarWhereWithAggregatesInput, orderBy: [UsersOrderByWithAggregationInput!], skip: Int, take: Int, where: UsersWhereInput): [UsersGroupBy!]!
+  groupByActions(
+    by: [ActionsScalarFieldEnum!]!
+    having: ActionsScalarWhereWithAggregatesInput
+    orderBy: [ActionsOrderByWithAggregationInput!]
+    skip: Int
+    take: Int
+    where: ActionsWhereInput
+  ): [ActionsGroupBy!]!
+  groupByAssignees(
+    by: [AssigneesScalarFieldEnum!]!
+    having: AssigneesScalarWhereWithAggregatesInput
+    orderBy: [AssigneesOrderByWithAggregationInput!]
+    skip: Int
+    take: Int
+    where: AssigneesWhereInput
+  ): [AssigneesGroupBy!]!
+  groupByComments(
+    by: [CommentsScalarFieldEnum!]!
+    having: CommentsScalarWhereWithAggregatesInput
+    orderBy: [CommentsOrderByWithAggregationInput!]
+    skip: Int
+    take: Int
+    where: CommentsWhereInput
+  ): [CommentsGroupBy!]!
+  groupByNotifications(
+    by: [NotificationsScalarFieldEnum!]!
+    having: NotificationsScalarWhereWithAggregatesInput
+    orderBy: [NotificationsOrderByWithAggregationInput!]
+    skip: Int
+    take: Int
+    where: NotificationsWhereInput
+  ): [NotificationsGroupBy!]!
+  groupByTasks(
+    by: [TasksScalarFieldEnum!]!
+    having: TasksScalarWhereWithAggregatesInput
+    orderBy: [TasksOrderByWithAggregationInput!]
+    skip: Int
+    take: Int
+    where: TasksWhereInput
+  ): [TasksGroupBy!]!
+  groupByUsers(
+    by: [UsersScalarFieldEnum!]!
+    having: UsersScalarWhereWithAggregatesInput
+    orderBy: [UsersOrderByWithAggregationInput!]
+    skip: Int
+    take: Int
+    where: UsersWhereInput
+  ): [UsersGroupBy!]!
 }
 
 enum QueryMode {
@@ -1703,7 +1998,14 @@ enum TaskState {
 type Tasks {
   _count: TasksCount
   assignees: Assignees
-  comments(cursor: CommentsWhereUniqueInput, distinct: [CommentsScalarFieldEnum!], orderBy: [CommentsOrderByWithRelationInput!], skip: Int, take: Int, where: CommentsWhereInput): [Comments!]!
+  comments(
+    cursor: CommentsWhereUniqueInput
+    distinct: [CommentsScalarFieldEnum!]
+    orderBy: [CommentsOrderByWithRelationInput!]
+    skip: Int
+    take: Int
+    where: CommentsWhereInput
+  ): [Comments!]!
   created_at: DateTime!
   description: String!
   due_at: DateTime!
@@ -2131,14 +2433,35 @@ type Users {
   _count: UsersCount
   active: Boolean!
   assignees: Assignees
-  comments(cursor: CommentsWhereUniqueInput, distinct: [CommentsScalarFieldEnum!], orderBy: [CommentsOrderByWithRelationInput!], skip: Int, take: Int, where: CommentsWhereInput): [Comments!]!
+  comments(
+    cursor: CommentsWhereUniqueInput
+    distinct: [CommentsScalarFieldEnum!]
+    orderBy: [CommentsOrderByWithRelationInput!]
+    skip: Int
+    take: Int
+    where: CommentsWhereInput
+  ): [Comments!]!
   created_at: DateTime!
   email: String!
   id: ID!
   last_sign_in_at: DateTime!
-  notifications(cursor: NotificationsWhereUniqueInput, distinct: [NotificationsScalarFieldEnum!], orderBy: [NotificationsOrderByWithRelationInput!], skip: Int, take: Int, where: NotificationsWhereInput): [Notifications!]!
+  notifications(
+    cursor: NotificationsWhereUniqueInput
+    distinct: [NotificationsScalarFieldEnum!]
+    orderBy: [NotificationsOrderByWithRelationInput!]
+    skip: Int
+    take: Int
+    where: NotificationsWhereInput
+  ): [Notifications!]!
   preferences: JSON!
-  tasks(cursor: TasksWhereUniqueInput, distinct: [TasksScalarFieldEnum!], orderBy: [TasksOrderByWithRelationInput!], skip: Int, take: Int, where: TasksWhereInput): [Tasks!]!
+  tasks(
+    cursor: TasksWhereUniqueInput
+    distinct: [TasksScalarFieldEnum!]
+    orderBy: [TasksOrderByWithRelationInput!]
+    skip: Int
+    take: Int
+    where: TasksWhereInput
+  ): [Tasks!]!
   updated_at: DateTime!
 }
 
