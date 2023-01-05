@@ -25,7 +25,7 @@ export class Users {
 
   password?: string;
 
-  password_digest?: string;
+  password_digest?: string | null;
 
   @TypeGraphQL.Field(_type => Boolean, {
     nullable: false
@@ -33,9 +33,9 @@ export class Users {
   active!: boolean;
 
   @TypeGraphQL.Field(_type => GraphQLScalars.JSONResolver, {
-    nullable: false
+    nullable: true
   })
-  preferences!: Prisma.JsonValue;
+  preferences?: Prisma.JsonValue | null;
 
   @TypeGraphQL.Field(_type => Date, {
     nullable: false

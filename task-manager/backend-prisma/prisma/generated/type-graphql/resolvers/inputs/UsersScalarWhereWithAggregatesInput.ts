@@ -4,7 +4,8 @@ import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
 import { BoolWithAggregatesFilter } from "../inputs/BoolWithAggregatesFilter";
 import { DateTimeWithAggregatesFilter } from "../inputs/DateTimeWithAggregatesFilter";
-import { JsonWithAggregatesFilter } from "../inputs/JsonWithAggregatesFilter";
+import { JsonNullableWithAggregatesFilter } from "../inputs/JsonNullableWithAggregatesFilter";
+import { StringNullableWithAggregatesFilter } from "../inputs/StringNullableWithAggregatesFilter";
 import { StringWithAggregatesFilter } from "../inputs/StringWithAggregatesFilter";
 
 @TypeGraphQL.InputType("UsersScalarWhereWithAggregatesInput", {
@@ -46,10 +47,10 @@ export class UsersScalarWhereWithAggregatesInput {
   })
   active?: BoolWithAggregatesFilter | undefined;
 
-  @TypeGraphQL.Field(_type => JsonWithAggregatesFilter, {
+  @TypeGraphQL.Field(_type => JsonNullableWithAggregatesFilter, {
     nullable: true
   })
-  preferences?: JsonWithAggregatesFilter | undefined;
+  preferences?: JsonNullableWithAggregatesFilter | undefined;
 
   @TypeGraphQL.Field(_type => DateTimeWithAggregatesFilter, {
     nullable: true

@@ -6,6 +6,7 @@ import { AssigneesUpdateOneWithoutUsersNestedInput } from "../inputs/AssigneesUp
 import { BoolFieldUpdateOperationsInput } from "../inputs/BoolFieldUpdateOperationsInput";
 import { CommentsUpdateManyWithoutUsersNestedInput } from "../inputs/CommentsUpdateManyWithoutUsersNestedInput";
 import { DateTimeFieldUpdateOperationsInput } from "../inputs/DateTimeFieldUpdateOperationsInput";
+import { NullableStringFieldUpdateOperationsInput } from "../inputs/NullableStringFieldUpdateOperationsInput";
 import { StringFieldUpdateOperationsInput } from "../inputs/StringFieldUpdateOperationsInput";
 import { TasksUpdateManyWithoutUsersNestedInput } from "../inputs/TasksUpdateManyWithoutUsersNestedInput";
 

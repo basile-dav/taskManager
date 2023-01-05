@@ -98,8 +98,8 @@ export { EnumCommentTargetTypeWithAggregatesFilter } from "./EnumCommentTargetTy
 export { EnumTaskStateFieldUpdateOperationsInput } from "./EnumTaskStateFieldUpdateOperationsInput";
 export { EnumTaskStateFilter } from "./EnumTaskStateFilter";
 export { EnumTaskStateWithAggregatesFilter } from "./EnumTaskStateWithAggregatesFilter";
-export { JsonFilter } from "./JsonFilter";
-export { JsonWithAggregatesFilter } from "./JsonWithAggregatesFilter";
+export { JsonNullableFilter } from "./JsonNullableFilter";
+export { JsonNullableWithAggregatesFilter } from "./JsonNullableWithAggregatesFilter";
 export { NestedBoolFilter } from "./NestedBoolFilter";
 export { NestedBoolWithAggregatesFilter } from "./NestedBoolWithAggregatesFilter";
 export { NestedDateTimeFilter } from "./NestedDateTimeFilter";
@@ -115,8 +115,11 @@ export { NestedEnumCommentTargetTypeWithAggregatesFilter } from "./NestedEnumCom
 export { NestedEnumTaskStateFilter } from "./NestedEnumTaskStateFilter";
 export { NestedEnumTaskStateWithAggregatesFilter } from "./NestedEnumTaskStateWithAggregatesFilter";
 export { NestedIntFilter } from "./NestedIntFilter";
-export { NestedJsonFilter } from "./NestedJsonFilter";
+export { NestedIntNullableFilter } from "./NestedIntNullableFilter";
+export { NestedJsonNullableFilter } from "./NestedJsonNullableFilter";
 export { NestedStringFilter } from "./NestedStringFilter";
+export { NestedStringNullableFilter } from "./NestedStringNullableFilter";
+export { NestedStringNullableWithAggregatesFilter } from "./NestedStringNullableWithAggregatesFilter";
 export { NestedStringWithAggregatesFilter } from "./NestedStringWithAggregatesFilter";
 export { NotificationsCountOrderByAggregateInput } from "./NotificationsCountOrderByAggregateInput";
 export { NotificationsCreateInput } from "./NotificationsCreateInput";
@@ -153,8 +156,11 @@ export { NotificationsUpsertWithWhereUniqueWithoutActionsInput } from "./Notific
 export { NotificationsUpsertWithWhereUniqueWithoutUsersInput } from "./NotificationsUpsertWithWhereUniqueWithoutUsersInput";
 export { NotificationsWhereInput } from "./NotificationsWhereInput";
 export { NotificationsWhereUniqueInput } from "./NotificationsWhereUniqueInput";
+export { NullableStringFieldUpdateOperationsInput } from "./NullableStringFieldUpdateOperationsInput";
 export { StringFieldUpdateOperationsInput } from "./StringFieldUpdateOperationsInput";
 export { StringFilter } from "./StringFilter";
+export { StringNullableFilter } from "./StringNullableFilter";
+export { StringNullableWithAggregatesFilter } from "./StringNullableWithAggregatesFilter";
 export { StringWithAggregatesFilter } from "./StringWithAggregatesFilter";
 export { TasksCountOrderByAggregateInput } from "./TasksCountOrderByAggregateInput";
 export { TasksCreateInput } from "./TasksCreateInput";

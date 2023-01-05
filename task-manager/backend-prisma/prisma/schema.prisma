@@ -20,9 +20,9 @@ model Users {
   /// @TypeGraphQL.omit(output: true)
   password        String
   /// @TypeGraphQL.omit(output: true, input: true)
-  password_digest String
+  password_digest String?
   active          Boolean
-  preferences     Json
+  preferences     Json?
   last_sign_in_at DateTime
   created_at      DateTime
   updated_at      DateTime

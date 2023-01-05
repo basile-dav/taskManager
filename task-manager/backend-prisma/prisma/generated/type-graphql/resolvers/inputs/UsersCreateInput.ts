@@ -32,9 +32,9 @@ export class UsersCreateInput {
   active!: boolean;
 
   @TypeGraphQL.Field(_type => GraphQLScalars.JSONResolver, {
-    nullable: false
+    nullable: true
   })
-  preferences!: Prisma.InputJsonValue;
+  preferences?: Prisma.InputJsonValue | undefined;
 
   @TypeGraphQL.Field(_type => Date, {
     nullable: false

@@ -7,6 +7,7 @@ import { BoolFieldUpdateOperationsInput } from "../inputs/BoolFieldUpdateOperati
 import { CommentsUpdateManyWithoutUsersNestedInput } from "../inputs/CommentsUpdateManyWithoutUsersNestedInput";
 import { DateTimeFieldUpdateOperationsInput } from "../inputs/DateTimeFieldUpdateOperationsInput";
 import { NotificationsUpdateManyWithoutUsersNestedInput } from "../inputs/NotificationsUpdateManyWithoutUsersNestedInput";
+import { NullableStringFieldUpdateOperationsInput } from "../inputs/NullableStringFieldUpdateOperationsInput";
 import { StringFieldUpdateOperationsInput } from "../inputs/StringFieldUpdateOperationsInput";
 
 @TypeGraphQL.InputType("UsersUpdateWithoutTasksInput", {

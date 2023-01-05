@@ -6,9 +6,10 @@ import { AssigneesRelationFilter } from "../inputs/AssigneesRelationFilter";
 import { BoolFilter } from "../inputs/BoolFilter";
 import { CommentsListRelationFilter } from "../inputs/CommentsListRelationFilter";
 import { DateTimeFilter } from "../inputs/DateTimeFilter";
-import { JsonFilter } from "../inputs/JsonFilter";
+import { JsonNullableFilter } from "../inputs/JsonNullableFilter";
 import { NotificationsListRelationFilter } from "../inputs/NotificationsListRelationFilter";
 import { StringFilter } from "../inputs/StringFilter";
+import { StringNullableFilter } from "../inputs/StringNullableFilter";
 import { TasksListRelationFilter } from "../inputs/TasksListRelationFilter";
 
 @TypeGraphQL.InputType("UsersWhereInput", {
@@ -50,10 +51,10 @@ export class UsersWhereInput {
   })
   active?: BoolFilter | undefined;
 
-  @TypeGraphQL.Field(_type => JsonFilter, {
+  @TypeGraphQL.Field(_type => JsonNullableFilter, {
     nullable: true
   })
-  preferences?: JsonFilter | undefined;
+  preferences?: JsonNullableFilter | undefined;
 
   @TypeGraphQL.Field(_type => DateTimeFilter, {
     nullable: true
