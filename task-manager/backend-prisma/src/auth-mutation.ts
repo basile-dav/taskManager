@@ -10,32 +10,28 @@ import bcrypt from 'bcrypt';
 
 @TypeGraphQL.Resolver()
 export class AuthenticationResolver {           
-    @TypeGraphQL.Mutation({
+    @TypeGraphQL.Mutation(_returns=>Users,{
         nullable:false
     })
-    async signup(@TypeGraphQL.Ctx() ctx: any, @TypeGraphQL.Info() info: GraphQLResolveInfo, @TypeGraphQL.Args() args: Users) {
+    async signup(@TypeGraphQL.Ctx() ctx: any, @TypeGraphQL.Info() info: GraphQLResolveInfo, @TypeGraphQL.Args() args: Users): Promise<Users> {
         const password = await bcrypt.hash(args.password,10)
         const user = await getPrismaFromContext(ctx).users.create({args,password})
-        return {
-            user
-        }
+        return user;
     }
 
-    @TypeGraphQL.Query({
-        nullable:false
+    @TypeGraphQL.Query(_returns=>Users,{
+        nullable:true
     })
-    async login(@TypeGraphQL.Ctx() ctx: any, @TypeGraphQL.Info() info: GraphQLResolveInfo, @TypeGraphQL.Args() args: Users){
-        const user = await getPrismaFromContext(ctx).users.findUnique({where:{email: args.email}})
+    async login(@TypeGraphQL.Ctx() ctx: any, @TypeGraphQL.Info() info: GraphQLResolveInfo, @TypeGraphQL.Args() args: FindUniqueUsersArgs): Promise<Users |null>{
+        const user = await getPrismaFromContext(ctx).users.findUnique({...args})
         if (!user) {
             console.log("no such user found")
         }
-        const valid = await bcrypt.compare(args.password, user.password)
+        const valid = await bcrypt.compare(args, user.password)
         if (!valid) {
             console.log("Invalid Password")
         }     
-        return {
-            user
-        
+        return  user;
     }
-    }
+
 }
